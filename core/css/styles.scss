@@ -159,7 +159,7 @@ body {
 
 /* Searchbox */
 
-.searchbox input[type="search"] {
+.searchbox input[type='search'] {
 	position: relative;
 	font-size: 1.2em;
 	padding: 3px;
@@ -174,7 +174,7 @@ body {
 	cursor: pointer;
 	-webkit-transition: all 100ms;
 	transition: all 100ms;
-	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=70)";
+	-ms-filter: 'progid:DXImageTransform.Microsoft.Alpha(Opacity=70)';
 	opacity: .7;
 	&:focus, &:active, &:valid {
 		color: #fff;
@@ -283,12 +283,12 @@ body {
 	line-height: 150%;
 }
 
-#emptycontent [class^="icon-"], .emptycontent [class^="icon-"], #emptycontent [class*=" icon-"], .emptycontent [class*=" icon-"] {
+#emptycontent [class^='icon-'], .emptycontent [class^='icon-'], #emptycontent [class*=' icon-'], .emptycontent [class*=' icon-'] {
 	background-size: 64px;
 	height: 64px;
 	width: 64px;
 	margin: 0 auto 15px;
-	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=40)";
+	-ms-filter: 'progid:DXImageTransform.Microsoft.Alpha(Opacity=40)';
 	opacity: .4;
 }
 
@@ -309,11 +309,11 @@ body {
 		color: #fff;
 	}
 	form {
-		fieldset .warning-info, input[type="checkbox"] + label {
+		fieldset .warning-info, input[type='checkbox'] + label {
 			text-align: center;
 			color: #fff;
 		}
-		.warning input[type="checkbox"] {
+		.warning input[type='checkbox'] {
 			&:hover + label, &:focus + label, + label {
 				color: #fff !important;
 			}
@@ -418,7 +418,7 @@ body {
 		color: #ccc;
 	}
 	input {
-		&[type="text"], &[type="password"], &[type="email"] {
+		&[type='text'], &[type='password'], &[type='email'] {
 			border: none;
 			font-weight: 300;
 		}
@@ -477,7 +477,7 @@ label.infield {
 
 #body-login {
 	form {
-		input[type="checkbox"] + label {
+		input[type='checkbox'] + label {
 			position: relative;
 			margin: 0;
 			padding: 14px;
@@ -551,7 +551,7 @@ label.infield {
 }
 
 #show:checked + label, #dbpassword:checked + label, #personal-show:checked + label {
-	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
+	-ms-filter: 'progid:DXImageTransform.Microsoft.Alpha(Opacity=80)';
 	opacity: .8;
 }
 
@@ -562,7 +562,7 @@ label.infield {
 	background-image: url('../img/actions/toggle.svg?v=1');
 	background-repeat: no-repeat;
 	background-position: center;
-	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=30)";
+	-ms-filter: 'progid:DXImageTransform.Microsoft.Alpha(Opacity=30)';
 	opacity: .3;
 }
 
@@ -570,7 +570,7 @@ label.infield {
 	display: none;
 }
 
-#pass2, input[name="personal-password-clone"] {
+#pass2, input[name='personal-password-clone'] {
 	padding: .6em 2.5em .4em .4em;
 	width: 8em;
 }
@@ -690,7 +690,7 @@ label.infield {
 	.warning {
 		margin: 0 7px 5px 4px;
 		legend {
-			-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+			-ms-filter: 'progid:DXImageTransform.Microsoft.Alpha(Opacity=100)';
 			opacity: 1;
 		}
 	}
@@ -725,14 +725,14 @@ label.infield {
 	font-size: 20px;
 	margin: 5px;
 	padding: 11px 10px 9px;
-	&[type="text"], &[type="password"] {
+	&[type='text'], &[type='password'] {
 		width: 249px;
 	}
 	&.login {
 		width: 269px;
 		background-position: right 16px center;
 	}
-	&[type="submit"] {
+	&[type='submit'] {
 		padding: 10px 20px;
 		/* larger log in and installation buttons */
 	}
@@ -798,7 +798,7 @@ td.avatar {
 	top: 0;
 	border-bottom-left-radius: 3px;
 	border-bottom-right-radius: 3px;
-	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=90)";
+	-ms-filter: 'progid:DXImageTransform.Microsoft.Alpha(Opacity=90)';
 	opacity: .9;
 	span {
 		cursor: pointer;
@@ -824,19 +824,19 @@ td.avatar {
 }
 
 tr .action:not(.permanent), .selectedActions a {
-	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+	-ms-filter: 'progid:DXImageTransform.Microsoft.Alpha(Opacity=0)';
 	opacity: 0;
 }
 
 tr {
 	&:hover .action, &:focus .action, .action.permanent {
-		-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+		-ms-filter: 'progid:DXImageTransform.Microsoft.Alpha(Opacity=50)';
 		opacity: .5;
 	}
 }
 
 .selectedActions a {
-	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+	-ms-filter: 'progid:DXImageTransform.Microsoft.Alpha(Opacity=50)';
 	opacity: .5;
 }
 
@@ -846,27 +846,27 @@ tr .action {
 }
 
 .header-action {
-	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
+	-ms-filter: 'progid:DXImageTransform.Microsoft.Alpha(Opacity=80)';
 	opacity: .8;
 }
 
 tr {
 	&:hover .action:hover, &:focus .action:focus {
-		-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+		-ms-filter: 'progid:DXImageTransform.Microsoft.Alpha(Opacity=100)';
 		opacity: 1;
 	}
 }
 
 .selectedActions a {
 	&:hover, &:focus {
-		-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+		-ms-filter: 'progid:DXImageTransform.Microsoft.Alpha(Opacity=100)';
 		opacity: 1;
 	}
 }
 
 .header-action {
 	&:hover, &:focus {
-		-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+		-ms-filter: 'progid:DXImageTransform.Microsoft.Alpha(Opacity=100)';
 		opacity: 1;
 	}
 }
@@ -878,7 +878,7 @@ tbody tr {
 }
 
 code {
-	font-family: "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", monospace;
+	font-family: 'Lucida Console', 'Lucida Sans Typewriter', 'DejaVu Sans Mono', monospace;
 }
 
 #quota {
@@ -1201,7 +1201,7 @@ div.crumb {
 		top: 8px !important;
 	}
 	&:hover, &:focus, a:focus, &:active {
-		-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=70)";
+		-ms-filter: 'progid:DXImageTransform.Microsoft.Alpha(Opacity=70)';
 		opacity: .7;
 	}
 }
@@ -1263,5 +1263,5 @@ fieldset {
 	width: 0;
 	height: 0;
 	opacity: 0;
-	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+	-ms-filter: 'progid:DXImageTransform.Microsoft.Alpha(Opacity=0)';
 }

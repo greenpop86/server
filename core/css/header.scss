@@ -49,14 +49,14 @@
 	height: 45px;
 	/* header height */
 	box-sizing: border-box;
-	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+	-ms-filter: 'progid:DXImageTransform.Microsoft.Alpha(Opacity=100)';
 	opacity: 1;
 	&:focus {
-		-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=75)";
+		-ms-filter: 'progid:DXImageTransform.Microsoft.Alpha(Opacity=75)';
 		opacity: .75;
 	}
 	&:hover, &:active {
-		-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+		-ms-filter: 'progid:DXImageTransform.Microsoft.Alpha(Opacity=100)';
 		opacity: 1;
 	}
 }
@@ -93,30 +93,30 @@
 /* hover effect for app switcher label */
 
 .header-appname-container .header-appname {
-	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=75)";
+	-ms-filter: 'progid:DXImageTransform.Microsoft.Alpha(Opacity=75)';
 	opacity: .75;
 }
 
 .menutoggle {
 	.icon-caret {
-		-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=75)";
+		-ms-filter: 'progid:DXImageTransform.Microsoft.Alpha(Opacity=75)';
 		opacity: .75;
 	}
 	&:hover {
 		.header-appname, .icon-caret {
-			-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+			-ms-filter: 'progid:DXImageTransform.Microsoft.Alpha(Opacity=100)';
 			opacity: 1;
 		}
 	}
 	&:focus {
 		.header-appname, .icon-caret {
-			-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+			-ms-filter: 'progid:DXImageTransform.Microsoft.Alpha(Opacity=100)';
 			opacity: 1;
 		}
 	}
 	&.active {
 		.header-appname, .icon-caret {
-			-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+			-ms-filter: 'progid:DXImageTransform.Microsoft.Alpha(Opacity=100)';
 			opacity: 1;
 		}
 	}
@@ -176,7 +176,7 @@
 	&:after {
 		bottom: 100%;
 		border: solid transparent;
-		content: " ";
+		content: ' ';
 		height: 0;
 		width: 0;
 		position: absolute;
@@ -193,7 +193,7 @@
 #expanddiv:after {
 	bottom: 100%;
 	border: solid transparent;
-	content: " ";
+	content: ' ';
 	height: 0;
 	width: 0;
 	position: absolute;
@@ -242,16 +242,16 @@
 			text-overflow: ellipsis;
 		}
 		svg, span {
-			-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+			-ms-filter: 'progid:DXImageTransform.Microsoft.Alpha(Opacity=50)';
 			opacity: .5;
 		}
 		&:hover svg, &:focus svg, &:hover span, &:focus span {
-			-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=75)";
+			-ms-filter: 'progid:DXImageTransform.Microsoft.Alpha(Opacity=75)';
 			opacity: .75;
 		}
 		&.active {
 			svg, span {
-				-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=75)";
+				-ms-filter: 'progid:DXImageTransform.Microsoft.Alpha(Opacity=75)';
 				opacity: .75;
 			}
 		}
@@ -262,7 +262,7 @@
 
 #apps-management a {
 	&:hover svg, &:focus svg, &.active svg, &:hover span, &:focus span, &.active span {
-		-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=75)";
+		-ms-filter: 'progid:DXImageTransform.Microsoft.Alpha(Opacity=75)';
 		opacity: .75;
 	}
 }
@@ -282,7 +282,7 @@
 	margin: 0;
 	a {
 		svg, span {
-			-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=30)";
+			-ms-filter: 'progid:DXImageTransform.Microsoft.Alpha(Opacity=30)';
 			opacity: .3;
 		}
 	}
@@ -300,7 +300,7 @@
 		height: 32px;
 	}
 	.app-icon {
-		-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+		-ms-filter: 'progid:DXImageTransform.Microsoft.Alpha(Opacity=0)';
 		opacity: 0;
 	}
 }
@@ -363,12 +363,12 @@
 		color: #fff;
 	}
 	img {
-		-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=70)";
+		-ms-filter: 'progid:DXImageTransform.Microsoft.Alpha(Opacity=70)';
 		opacity: .7;
 		margin-bottom: -2px;
 	}
 	&:hover img, &:focus img, &:active img {
-		-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+		-ms-filter: 'progid:DXImageTransform.Microsoft.Alpha(Opacity=100)';
 		opacity: 1;
 	}
 	.icon-caret {
@@ -398,7 +398,7 @@
 		height: 40px;
 		color: #000;
 		padding: 4px 12px 0;
-		-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+		-ms-filter: 'progid:DXImageTransform.Microsoft.Alpha(Opacity=50)';
 		opacity: .5;
 		box-sizing: border-box;
 		img {
@@ -406,7 +406,7 @@
 			margin-right: 6px;
 		}
 		&:hover, &:focus, &:active, &.active {
-			-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=75)";
+			-ms-filter: 'progid:DXImageTransform.Microsoft.Alpha(Opacity=75)';
 			opacity: .75;
 		}
 	}

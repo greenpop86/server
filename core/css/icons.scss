@@ -1,4 +1,4 @@
-[class^="icon-"], [class*=" icon-"] {
+[class^='icon-'], [class*=' icon-'] {
 	background-repeat: no-repeat;
 	background-position: center;
 	min-width: 16px;
@@ -17,7 +17,7 @@
 
 .loading:after, .loading-small:after, .icon-loading:after, .icon-loading-dark:after, .icon-loading-small:after, .icon-loading-small-dark:after {
 	z-index: 2;
-	content: "";
+	content: '';
 	height: 32px;
 	width: 32px;
 	margin: -17px 0 0 -17px;
@@ -51,19 +51,19 @@
 /* Css replaced elements don't have ::after nor ::before */
 
 img.icon-loading, object.icon-loading, video.icon-loading, button.icon-loading, textarea.icon-loading, input.icon-loading, select.icon-loading {
-	background-image: url("../img/loading.gif");
+	background-image: url('../img/loading.gif');
 }
 
 img.icon-loading-dark, object.icon-loading-dark, video.icon-loading-dark, button.icon-loading-dark, textarea.icon-loading-dark, input.icon-loading-dark, select.icon-loading-dark {
-	background-image: url("../img/loading-dark.gif");
+	background-image: url('../img/loading-dark.gif');
 }
 
 img.icon-loading-small, object.icon-loading-small, video.icon-loading-small, button.icon-loading-small, textarea.icon-loading-small, input.icon-loading-small, select.icon-loading-small {
-	background-image: url("../img/loading-small.gif");
+	background-image: url('../img/loading-small.gif');
 }
 
 img.icon-loading-small-dark, object.icon-loading-small-dark, video.icon-loading-small-dark, button.icon-loading-small-dark, textarea.icon-loading-small-dark, input.icon-loading-small-dark, select.icon-loading-small-dark {
-	background-image: url("../img/loading-small-dark.gif");
+	background-image: url('../img/loading-small-dark.gif');
 }
 
 @-webkit-keyframes rotate {
