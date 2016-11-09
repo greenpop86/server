@@ -406,6 +406,11 @@ class Server extends ServerContainer implements IServerContainer {
 				$c->getConfig()
 			);
 		});
+		$this->registerService('CssManager', function (Server $c) {
+			return new CssManager(
+				$c->getAppDataDir('server')
+			);
+		});
 		$this->registerService('Logger', function (Server $c) {
 			$logClass = $c->query('AllConfig')->getSystemValue('log_type', 'file');
 			// TODO: Drop backwards compatibility for config in the future
@@ -882,6 +887,16 @@ class Server extends ServerContainer implements IServerContainer {
 	 */
 	public function getAvatarManager() {
 		return $this->query('AvatarManager');
+	}
+
+
+	/**
+	 * Returns the css manager
+	 *
+	 * @return \OCP\ICssManager
+	 */
+	public function getCssManager() {
+		return $this->query('CssManager');
 	}
 
 	/**
