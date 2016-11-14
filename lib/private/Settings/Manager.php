@@ -331,6 +331,7 @@ class Manager implements IManager {
 		$sections = [
 			 0 => [new Section('server',        $this->l->t('Server settings'), 0)],
 			 5 => [new Section('sharing',       $this->l->t('Sharing'), 0)],
+			10 => [new Section('security',      $this->l->t('Security'), 0)],
 			45 => [new Section('encryption',    $this->l->t('Encryption'), 0)],
 			90 => [new Section('logging',       $this->l->t('Logging'), 0)],
 			98 => [new Section('additional',    $this->l->t('Additional settings'), 0)],
