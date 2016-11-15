@@ -1184,16 +1184,17 @@ div.crumb {
 		padding: 14px 24px 14px 17px;
 		color: #555;
 	}
-	&:first-child a {
-		position: relative;
-		top: 13px;
-	}
 	&.last {
 		font-weight: 600;
 		margin-right: 10px;
 		a {
 			padding-right: 0px;
 		}
+	}
+	&:first-child a {
+		position: relative;
+		top: 13px;
+		padding-right: 14px;
 	}
 	a.ellipsislink {
 		padding: 0 !important;

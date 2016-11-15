@@ -879,7 +879,6 @@ class Server extends ServerContainer implements IServerContainer {
 		return $this->query('SystemTagObjectMapper');
 	}
 
-
 	/**
 	 * Returns the avatar manager, used for avatar functionality
 	 *
@@ -888,7 +887,6 @@ class Server extends ServerContainer implements IServerContainer {
 	public function getAvatarManager() {
 		return $this->query('AvatarManager');
 	}
-
 
 	/**
 	 * Returns the css manager
