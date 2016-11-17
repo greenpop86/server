@@ -60,6 +60,7 @@ $application->registerRoutes($this, [
 		['root' => '/cloud', 'name' => 'OCS#getCurrentUser', 'url' => '/user', 'verb' => 'GET'],
 		['root' => '', 'name' => 'OCS#getConfig', 'url' => '/config', 'verb' => 'GET'],
 		['root' => '/person', 'name' => 'OCS#personCheck', 'url' => '/check', 'verb' => 'POST'],
+		['root' => '/identityproof', 'name' => 'OCS#getIdentityProof', 'url' => '/key/{cloudId}', 'verb' => 'GET'],
 	],
 ]);
 
