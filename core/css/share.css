@@ -82,8 +82,8 @@
 }
 
 #shareWithList .sharingOptionsGroup .popovermenu {
-	right: -22px;
-	top: 30px;
+	right: -14px;
+	top: 40px;
 }
 
 #shareWithList .shareOption {
@@ -182,9 +182,9 @@ a.showCruds:hover,a.unshare:hover {
 }
 
 .ui-autocomplete { /* limit dropdown height to 4 1/2 entries */
-	max-height:103px;
-	overflow-y:auto;
-	overflow-x:hidden;
+	max-height: 200px;
+	overflow-y: auto;
+	overflow-x: hidden;
 }
 
 .notCreatable {
