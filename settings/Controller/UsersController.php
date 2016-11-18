@@ -310,6 +310,7 @@ class UsersController extends Controller {
 
 	/**
 	 * @NoAdminRequired
+	 * @PasswordConfirmationRequired
 	 *
 	 * @param string $username
 	 * @param string $password
@@ -442,6 +443,7 @@ class UsersController extends Controller {
 
 	/**
 	 * @NoAdminRequired
+	 * @PasswordConfirmationRequired
 	 *
 	 * @param string $id
 	 * @return DataResponse
@@ -502,6 +504,7 @@ class UsersController extends Controller {
 	/**
 	 * @NoAdminRequired
 	 * @NoSubadminRequired
+	 * @PasswordConfirmationRequired
 	 *
 	 * @param string $avatarScope
 	 * @param string $displayname

@@ -26,9 +26,12 @@ namespace OCA\Theming\Tests\Controller;
 
 use OCA\Theming\Controller\ThemingController;
 use OCA\Theming\Util;
+use OCP\App\IAppManager;
 use OCP\AppFramework\Http;
 use OCP\AppFramework\Http\DataResponse;
+use OCP\Files\File;
 use OCP\Files\IRootFolder;
+use OCP\Files\NotFoundException;
 use OCP\IConfig;
 use OCP\IL10N;
 use OCP\IRequest;
@@ -55,18 +58,21 @@ class ThemingControllerTest extends TestCase {
 	private $rootFolder;
 	/** @var ITempManager */
 	private $tempManager;
+	/** @var IAppManager */
+	private $appManager;
 
 	public function setUp() {
 		$this->request = $this->getMockBuilder('OCP\IRequest')->getMock();
 		$this->config = $this->getMockBuilder('OCP\IConfig')->getMock();
 		$this->template = $this->getMockBuilder('OCA\Theming\ThemingDefaults')
 			->disableOriginalConstructor()->getMock();
-		$this->util = new Util();
 		$this->timeFactory = $this->getMockBuilder('OCP\AppFramework\Utility\ITimeFactory')
 			->disableOriginalConstructor()
 			->getMock();
 		$this->l10n = $this->getMockBuilder('OCP\IL10N')->getMock();
 		$this->rootFolder = $this->getMockBuilder('OCP\Files\IRootFolder')->getMock();
+		$this->appManager = $this->getMockBuilder('OCP\App\IAppManager')->getMock();
+		$this->util = new Util($this->config, $this->rootFolder, $this->appManager);
 		$this->timeFactory->expects($this->any())
 			->method('getTime')
 			->willReturn(123);
@@ -338,26 +344,30 @@ class ThemingControllerTest extends TestCase {
 	}
 
 	public function testGetLogoNotExistent() {
-		$expected = new DataResponse();
+		$this->rootFolder->method('get')
+			->with($this->equalTo('themedinstancelogo'))
+			->willThrowException(new NotFoundException());
+
+		$expected = new Http\NotFoundResponse();
 		$this->assertEquals($expected, $this->themingController->getLogo());
 	}
 
 	public function testGetLogo() {
-		$dataFolder = \OC::$server->getTempManager()->getTemporaryFolder();
-		$tmpLogo = $dataFolder . '/themedinstancelogo';
-		touch($tmpLogo);
-		$this->config
-			->expects($this->once())
-			->method('getSystemValue')
-			->with('datadirectory', \OC::$SERVERROOT . '/data/')
-			->willReturn($dataFolder);
+		$file = $this->createMock(File::class);
+		$this->rootFolder->method('get')
+			->with('themedinstancelogo')
+			->willReturn($file);
+		$file->method('fopen')
+			->with('r')
+			->willReturn('mypath');
+
 		$this->config
 			->expects($this->once())
 			->method('getAppValue')
 			->with('theming', 'logoMime', '')
 			->willReturn('text/svg');
 
-		@$expected = new Http\StreamResponse($tmpLogo);
+		@$expected = new Http\StreamResponse('mypath');
 		$expected->cacheFor(3600);
 		$expected->addHeader('Expires', date(\DateTime::RFC2822, 123));
 		$expected->addHeader('Content-Disposition', 'attachment');
@@ -368,26 +378,29 @@ class ThemingControllerTest extends TestCase {
 
 
 	public function testGetLoginBackgroundNotExistent() {
-		$expected = new DataResponse();
+		$this->rootFolder->method('get')
+			->with('themedbackgroundlogo')
+			->willThrowException(new NotFoundException());
+		$expected = new Http\NotFoundResponse();
 		$this->assertEquals($expected, $this->themingController->getLoginBackground());
 	}
 
 	public function testGetLoginBackground() {
-		$dataFolder = \OC::$server->getTempManager()->getTemporaryFolder();
-		$tmpLogo = $dataFolder . '/themedbackgroundlogo';
-		touch($tmpLogo);
-		$this->config
-			->expects($this->once())
-			->method('getSystemValue')
-			->with('datadirectory', \OC::$SERVERROOT . '/data/')
-			->willReturn($dataFolder);
+		$file = $this->createMock(File::class);
+		$this->rootFolder->method('get')
+			->with('themedbackgroundlogo')
+			->willReturn($file);
+		$file->method('fopen')
+			->with('r')
+			->willReturn('mypath');
+
 		$this->config
 			->expects($this->once())
 			->method('getAppValue')
 			->with('theming', 'backgroundMime', '')
 			->willReturn('image/png');
 
-		@$expected = new Http\StreamResponse($tmpLogo);
+		@$expected = new Http\StreamResponse('mypath');
 		$expected->cacheFor(3600);
 		$expected->addHeader('Expires', date(\DateTime::RFC2822, 123));
 		$expected->addHeader('Content-Disposition', 'attachment');
@@ -475,6 +488,12 @@ class ThemingControllerTest extends TestCase {
 		$expectedData .= sprintf('.nc-theming-main-background {background-color: %s}' . "\n", $color);
 		$expectedData .= sprintf('.nc-theming-main-text {color: %s}' . "\n", $color);
 		$expectedData .= '.nc-theming-contrast {color: #ffffff}' . "\n";
+		$expectedData .= '.icon-file,.icon-filetype-text {' .
+			'background-image: url(\'./img/core/filetypes/text.svg?v=0\');' . "}\n" .
+			'.icon-folder, .icon-filetype-folder {' .
+			'background-image: url(\'./img/core/filetypes/folder.svg?v=0\');' . "}\n" .
+			'.icon-filetype-folder-drag-accept {' .
+			'background-image: url(\'./img/core/filetypes/folder-drag-accept.svg?v=0\')!important;' . "}\n";
 
 		$expected = new Http\DataDownloadResponse($expectedData, 'style', 'text/css');
 
@@ -569,6 +588,12 @@ class ThemingControllerTest extends TestCase {
 		$expectedData .= '#body-login input.login { background-image: url(\'' . \OC::$WEBROOT . '/core/img/actions/confirm.svg?v=2\'); }' . "\n";
 		$expectedData .= '.nc-theming-contrast {color: #000000}' . "\n";
 		$expectedData .= '.ui-widget-header { color: #000000; }' . "\n";
+		$expectedData .= '.icon-file,.icon-filetype-text {' .
+			'background-image: url(\'./img/core/filetypes/text.svg?v=0\');' . "}\n" .
+			'.icon-folder, .icon-filetype-folder {' .
+			'background-image: url(\'./img/core/filetypes/folder.svg?v=0\');' . "}\n" .
+			'.icon-filetype-folder-drag-accept {' .
+			'background-image: url(\'./img/core/filetypes/folder-drag-accept.svg?v=0\')!important;' . "}\n";
 
 
 		$expected = new Http\DataDownloadResponse($expectedData, 'style', 'text/css');
@@ -614,6 +639,12 @@ class ThemingControllerTest extends TestCase {
 			'background-size: contain;' .
 			'}' . "\n";
 		$expectedData .= '.nc-theming-contrast {color: #ffffff}' . "\n";
+		$expectedData .= '.icon-file,.icon-filetype-text {' .
+			'background-image: url(\'./img/core/filetypes/text.svg?v=0\');' . "}\n" .
+			'.icon-folder, .icon-filetype-folder {' .
+			'background-image: url(\'./img/core/filetypes/folder.svg?v=0\');' . "}\n" .
+			'.icon-filetype-folder-drag-accept {' .
+			'background-image: url(\'./img/core/filetypes/folder-drag-accept.svg?v=0\')!important;' . "}\n";
 
 		$expected = new Http\DataDownloadResponse($expectedData, 'style', 'text/css');
 
@@ -756,6 +787,12 @@ class ThemingControllerTest extends TestCase {
 			'background-image: url(\'./loginbackground?v=0\');' .
 			'}' . "\n";
 		$expectedData .= '.nc-theming-contrast {color: #ffffff}' . "\n";
+		$expectedData .= '.icon-file,.icon-filetype-text {' .
+			'background-image: url(\'./img/core/filetypes/text.svg?v=0\');' . "}\n" .
+			'.icon-folder, .icon-filetype-folder {' .
+			'background-image: url(\'./img/core/filetypes/folder.svg?v=0\');' . "}\n" .
+			'.icon-filetype-folder-drag-accept {' .
+			'background-image: url(\'./img/core/filetypes/folder-drag-accept.svg?v=0\')!important;' . "}\n";
 		$expected = new Http\DataDownloadResponse($expectedData, 'style', 'text/css');
 
 		$expected->cacheFor(3600);
@@ -867,6 +904,13 @@ class ThemingControllerTest extends TestCase {
 		$expectedData .= '#body-login input.login { background-image: url(\'' . \OC::$WEBROOT . '/core/img/actions/confirm.svg?v=2\'); }' . "\n";
 		$expectedData .= '.nc-theming-contrast {color: #000000}' . "\n";
 		$expectedData .= '.ui-widget-header { color: #000000; }' . "\n";
+		$expectedData .= '.icon-file,.icon-filetype-text {' .
+			'background-image: url(\'./img/core/filetypes/text.svg?v=0\');' . "}\n" .
+			'.icon-folder, .icon-filetype-folder {' .
+			'background-image: url(\'./img/core/filetypes/folder.svg?v=0\');' . "}\n" .
+			'.icon-filetype-folder-drag-accept {' .
+			'background-image: url(\'./img/core/filetypes/folder-drag-accept.svg?v=0\')!important;' . "}\n";
+		$expected = new Http\DataDownloadResponse($expectedData, 'style', 'text/css');
 
 		$expected = new Http\DataDownloadResponse($expectedData, 'style', 'text/css');
 		$expected->cacheFor(3600);
@@ -901,6 +945,7 @@ class ThemingControllerTest extends TestCase {
 		slogan: "",
 		color: "#000",
 		inverted: false,
+		cacheBuster: null
 	};
 })();';
 		$expected = new Http\DataDisplayResponse($expectedResponse);
@@ -935,6 +980,7 @@ class ThemingControllerTest extends TestCase {
 		slogan: "awesome",
 		color: "#ffffff",
 		inverted: true,
+		cacheBuster: null
 	};
 })();';
 		$expected = new Http\DataDisplayResponse($expectedResponse);

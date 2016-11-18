@@ -68,6 +68,7 @@
 <?php
 if($_['displayNameChangeSupported']) {
 ?>
+<<<<<<< HEAD
 <div id="personal-settings-container">
 	<div class="personal-settings-setting-box">
 		<form id="displaynameform" class="section">
@@ -153,7 +154,7 @@ if($_['displayNameChangeSupported']) {
 	</div>
 
 	<span class="msg"></span>
-</div>
+</div
 <?php
 } else {
 ?>
