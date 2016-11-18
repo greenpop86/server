@@ -68,7 +68,6 @@
 <?php
 if($_['displayNameChangeSupported']) {
 ?>
-<<<<<<< HEAD
 <div id="personal-settings-container">
 	<div class="personal-settings-setting-box">
 		<form id="displaynameform" class="section">

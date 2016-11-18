@@ -667,6 +667,7 @@ class UsersController extends Controller {
 	 * Allow Admin to set the displayName of a user
 	 *
 	 * @NoAdminRequired
+	 * @PasswordConfirmationRequired
 	 *
 	 * @param string $username
 	 * @param string $displayName
