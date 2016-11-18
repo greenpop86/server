@@ -500,8 +500,6 @@ class UsersController extends Controller {
 	}
 
 	/**
-	 * @todo add method description
-	 *
 	 * @NoAdminRequired
 	 * @NoSubadminRequired
 	 *
@@ -665,6 +663,8 @@ class UsersController extends Controller {
 	/**
 	 * Allow Admin to set the displayName of a user
 	 *
+	 * @NoAdminRequired
+	 *
 	 * @param string $username
 	 * @param string $displayName
 	 * @return DataResponse
@@ -673,14 +673,8 @@ class UsersController extends Controller {
 		$currentUser = $this->userSession->getUser();
 		$user = $this->userManager->get($username);
 
-		if ($user === null ||
-			!$user->canChangeDisplayName() ||
-			(
-				!$this->groupManager->isAdmin($currentUser->getUID()) &&
-				!$this->groupManager->getSubAdmin()->isUserAccessible($currentUser, $user) &&
-				$currentUser->getUID() !== $username
-
-			)
+		if (!$this->groupManager->isAdmin($currentUser->getUID()) &&
+				!$this->groupManager->getSubAdmin()->isUserAccessible($currentUser, $user)
 		) {
 			return new DataResponse([
 				'status' => 'error',
